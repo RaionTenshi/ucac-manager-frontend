@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary : #6D0000;
+  --color-secondary : #270600;
+  --color-cta : #FF2400;
+  --color-grey : #858585;
+  --color-background : #F9F9F9;
+
+  --font-title : "Lora", serif;
+  --font-regular : "Crimson Text", serif;
+}
+
+
+html, body {
+  background-color: var(--color-background);
+}
+
+h1 {
+  font-family: var(--font-title);
+  font-size: 2rem;
+}
+
+p {
+  font-family: var(--font-regular);
+  font-size: 1rem;
+}

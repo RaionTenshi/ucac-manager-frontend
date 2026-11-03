@@ -1,0 +1,153 @@
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--color-primary);
+  font-family: var(--font-title);
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: width 0.25s ease;
+}
+.sidebar.hidden {
+  margin-left: -240px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar.collapsed .label,
+.sidebar.collapsed .chevron,
+.sidebar.collapsed .submenu {
+  display: none;
+}
+
+.sidebar.collapsed .brand {
+  font-size: 1.1rem;
+}
+
+.sidebar.collapsed .item {
+  justify-content: center;
+  padding: 14px 0;
+}
+
+.brand {
+  font-weight: 400;
+  text-align: center;
+  padding: 0 0 16px;
+  margin: 0;
+  color: var(--color-background);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 15px;
+  width: 100%;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  color: var(--color-background);
+  font: var(--font-title);
+  font-size: 1.15rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.item:hover {
+  background: var(--color-tertiary);
+}
+.item.active {
+  background: var(--color-tertiary);
+}
+.label {
+  flex: 1;
+}
+
+/* Flèche qui tourne */
+.chevron {
+  transition: transform 0.25s;
+  transform: rotate(180deg);
+}
+.chevron.open {
+  transform: rotate(0);
+}
+
+.submenu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+  background: rgba(0, 0, 0, 0.45);
+}
+.submenu.open {
+  grid-template-rows: 1fr;
+}
+.submenu ul {
+  overflow: hidden;
+  min-height: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.submenu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  color: var(--color-background);
+  text-decoration: none;
+}
+.submenu a::before {
+  /* le petit point */
+  content: '•';
+  padding: 0px 10px;
+  font-size: 0.7rem;
+  color: #ccc;
+}
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.submenu a.active {
+  background: #f7f7f7;
+  color: var(--color-primary);
+}
+.submenu a.active::before {
+  color: #d33;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 999;
+}
+
+.sidebar.mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 260px;
+  max-width: 80vw;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition:
+    transform 0.25s ease,
+    visibility 0s linear 0.25s;
+}
+.sidebar.mobile.open {
+  transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform 0.25s ease,
+    visibility 0s;
+}

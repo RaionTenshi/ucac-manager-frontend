@@ -1,0 +1,207 @@
+.cctl {
+  font-family: var(--font-regular);
+  color: #222;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.filters {
+  gap: 16px 24px;
+  align-items: end;
+}
+.fil {
+  display: flex;
+  gap: 50px;
+}
+.fil1 {
+  display: flex;
+  padding-top: 20px;
+}
+.filters1 {
+  width: 45%;
+}
+.filters2 {
+  width: 30%;
+}
+.filters3 {
+  width: 15%;
+}
+.filters4 {
+  width: 50%;
+}
+.cctl-name {
+  grid-column: 1;
+}
+.but {
+  padding-top: 35px;
+}
+.search-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: 0 0 5px 20px;
+  border: 1px solid var(--color-cta);
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+.search-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+.search-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tabs {
+  display: flex;
+  width: 365px;
+  margin: 40px auto 36px;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tabs button {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  cursor: pointer;
+}
+.tabs button.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ---------- 3 & 4. Tableaux ---------- */
+.table-box {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead th {
+  padding: 14px 10px;
+  background: var(--color-secondary);
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+}
+tbody td {
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+th.left,
+td.left {
+  text-align: left;
+  padding-left: 22px;
+}
+
+.summary {
+  width: 370px;
+  margin: 40px auto 0;
+}
+
+.details {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.details .col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* espace entre C1 et C3 */
+}
+.details th {
+  text-align: center;
+}
+/* ---------- Tablette ---------- */
+@media (max-width: 1024px) {
+  .cctl {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .fil {
+    gap: 24px;
+  }
+}
+
+/* ---------- Téléphone ---------- */
+@media (max-width: 768px) {
+  .cctl {
+    padding: 0;
+  }
+
+  /* Filtres : un par ligne */
+  .fil {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .filters1,
+  .filters2,
+  .filters3 {
+    width: 100%;
+  }
+
+  .fil1 {
+    align-items: flex-end;
+    gap: 12px;
+    padding-top: 16px;
+  }
+  .filters4 {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+  }
+  .but {
+    padding-top: 0;
+  }
+  .search-btn {
+    width: 40px;
+    height: 40px;
+    margin: 0 0 1px 0;
+  }
+
+  // .tabs {
+  //   margin: 24px auto;
+  // }
+  // .summary {
+  //   margin-top: 24px;
+  // }
+
+  // /* Tableaux plus compacts */
+  // thead th {
+  //   padding: 10px 6px;
+  //   font-size: 0.9rem;
+  // }
+  // tbody td {
+  //   padding: 0 6px;
+  //   font-size: 0.9rem;
+  //   overflow-wrap: anywhere;
+  // }
+  // th.left,
+  // td.left {
+  //   padding-left: 10px;
+  // }
+
+  // /* Fiches Details : une seule colonne */
+  // .details {
+  //   flex-direction: column;
+  //   gap: 16px;
+  // }
+  // .details .col {
+  //   display: contents;
+  // }
+}

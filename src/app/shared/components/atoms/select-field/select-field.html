@@ -1,0 +1,11 @@
+<label class="field">
+  <span>{{ label() }}</span>
+  <select (change)="onChange($event)">
+    <option value="" disabled hidden [selected]="value() === ''">
+      {{ placeholder() }}
+    </option>
+    @for (o of options(); track o) {
+      <option [value]="o" [selected]="o === value()">{{ o }}</option>
+    }
+  </select>
+</label>

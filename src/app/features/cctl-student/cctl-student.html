@@ -1,0 +1,144 @@
+<section class="cctl">
+  <div class="filters">
+    <div class="fil">
+      <div class="filters1">
+        <app-select-field
+          label="UE Name"
+          placeholder="UE.2.2. Programmation"
+          [options]="ueList"
+          [(value)]="ue"
+        />
+      </div>
+      <div class="filters2">
+        <app-select-field
+          label="Session"
+          placeholder="Normale"
+          [options]="sessions"
+          [(value)]="session"
+        />
+      </div>
+      <div class="filters3">
+        <app-select-field
+          label="Exam Year"
+          placeholder="Année"
+          [options]="years"
+          [(value)]="year"
+        />
+      </div>
+    </div>
+    <div class="fil1">
+      <div class="filters4">
+        <app-select-field
+          class="cctl-name"
+          label="CCTL Name"
+          placeholder="Choisir un CCTL"
+          [options]="cctlNames"
+          [(value)]="cctl"
+        />
+      </div>
+      <div class="but">
+        <button class="search-btn" [disabled]="!canSearch()" aria-label="Rechercher">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#ff2400"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button [class.active]="tab() === 'general'" (click)="tab.set('general')">General</button>
+    <button [class.active]="tab() === 'details'" (click)="tab.set('details')">Details</button>
+  </div>
+
+  @if (tab() === 'general') {
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Competence</th>
+            <th>Note</th>
+            <th>Total</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (c of results(); track c.name) {
+            <tr>
+              <td class="left">{{ c.name }}</td>
+              <td>{{ c.note }}</td>
+              <td>{{ c.total }}</td>
+              <td></td>
+            </tr>
+          } @empty {
+            @for (i of [1, 2, 3]; track i) {
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-box summary">
+      <table>
+        <thead>
+          <tr>
+            <th>Total</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            @if (results().length) {
+              <td>{{ totalNote() }} / {{ totalMax() }}</td>
+              <td></td>
+            } @else {
+              <td></td>
+              <td></td>
+            }
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <div class="details">
+      @for (col of detailColumns(); track $index) {
+        <div class="col">
+          @for (block of col; track block.title) {
+            <div class="table-box" [style.order]="block.order">
+              <table>
+                <thead>
+                  <tr>
+                    <th>{{ block.title }}</th>
+                    <th>Note</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (row of block.rows; track $index) {
+                    <tr>
+                      <td>{{ row.question }}</td>
+                      <td>{{ row.note }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</section>

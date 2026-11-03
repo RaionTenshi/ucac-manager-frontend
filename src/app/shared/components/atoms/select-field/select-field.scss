@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.field span {
+  font-size: 0.95rem;
+}
+.field select {
+  height: 42px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--color-grey);
+  font: inherit;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.02);
+  width: 100%;
+}

@@ -1,17 +1,21 @@
 :root {
-  --color-primary : #6D0000;
-  --color-secondary : #270600;
-  --color-cta : #FF2400;
-  --color-grey : #858585;
-  --color-background : #F9F9F9;
+  --color-primary: #6d0000;
+  --color-secondary: #270600;
+  --color-tertiary: #9d0000;
+  --color-cta: #ff2400;
+  --color-grey: #858585;
+  --color-background: #f9f9f9;
 
-  --font-title : "Lora", serif;
-  --font-regular : "Crimson Text", serif;
+  --font-title: 'Lora', serif;
+  --font-regular: 'Crimson Text', serif;
 }
 
-
-html, body {
+html,
+body {
   background-color: var(--color-background);
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 h1 {

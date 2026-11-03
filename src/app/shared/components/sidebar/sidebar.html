@@ -1,0 +1,61 @@
+@if (layout.isMobile() && layout.sidebarOpen()) {
+  <div class="backdrop" (click)="layout.closeOnMobile()"></div>
+}
+
+<aside
+  class="sidebar"
+  [class.collapsed]="!layout.isMobile() && !layout.sidebarOpen()"
+  [class.mobile]="layout.isMobile()"
+  [class.open]="layout.sidebarOpen()"
+>
+  <h1 class="brand">
+    @if (layout.sidebarOpen() || layout.isMobile()) {
+      Ucac-Icam
+    } @else {
+      UI
+    }
+  </h1>
+  <nav>
+    @for (item of menu; track item.label) {
+      @if (item.children) {
+        <button
+          class="item"
+          (click)="toggle(item.label)"
+          [attr.aria-expanded]="openGroup() === item.label"
+        >
+          <span class="material-symbols-outlined">{{ item.icon }}</span>
+          <span class="label">{{ item.label }}</span>
+          <span class="material-symbols-outlined chevron" [class.open]="openGroup() === item.label"
+            >expand_less</span
+          >
+        </button>
+
+        <div class="submenu" [class.open]="openGroup() === item.label">
+          <ul>
+            @for (child of item.children; track child.route) {
+              <li>
+                <a
+                  [routerLink]="child.route"
+                  routerLinkActive="active"
+                  (click)="layout.closeOnMobile()"
+                >
+                  {{ child.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      } @else {
+        <a
+          class="item"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          (click)="layout.closeOnMobile()"
+        >
+          <span class="material-symbols-outlined">{{ item.icon }}</span>
+          <span class="label">{{ item.label }}</span>
+        </a>
+      }
+    }
+  </nav>
+</aside>
